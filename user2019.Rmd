@@ -275,6 +275,10 @@ uncoupling of devtools and usethis
 
 ## Reusing tidyverse code
 
+[Slides](https://speakerdeck.com/lionelhenry/reusing-tidyverse-code)
+https://tidyeval.tidyverse.org
+
+
 usefull for dplyr, tidyr, ggplot2
 
 data masking -> can acess columns directly, without referencing the df anymore
@@ -288,6 +292,8 @@ new operator: {{arg}}
 by and var in [[]] for subsetting
 no data masking
 
+
+
 2 passing the dots ...
 automatically data masking
 
@@ -297,7 +303,15 @@ inspired by glue function
 {{by}} and {{var}}
 the same as !!enquo(var)
 need last version of rlang!
-https://tidyeval.tidyverse.org
+
+```{r}
+my_average <- function(data, grp_var, avg_var){
+  data %>% 
+    group_by({{grp_var}}) %>% 
+    summarise(avg = mean({{avg_var}}, na.rm = TRUE))
+}
+```
+
 
 
 ## Simple Arrays
