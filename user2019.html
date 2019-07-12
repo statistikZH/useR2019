@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Thomas LR, Andrea" />
+
+
+<title>useR!2019 Toulouse</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">useR!2019 Toulouse</h1>
+<h4 class="author">Thomas LR, Andrea</h4>
+<h4 class="date">July 2019</h4>
+
+</div>
+
+
+<div id="tutorials" class="section level1">
+<h1>Tutorials</h1>
+<div id="package-development" class="section level2">
+<h2>Package development</h2>
+<p>rstd.io/pkg-dev</p>
+<p><a href="https://r-pkgs.org" class="uri">https://r-pkgs.org</a> <a href="https://principles.tidyverse.org" class="uri">https://principles.tidyverse.org</a></p>
+<div id="create-package" class="section level3">
+<h3>Create package</h3>
+<p><a href="libs/intro-basic-workflow.pdf">Slides Package Workflow</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">.Library</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">.libPaths</span>()</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">installed.packages</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">ipt &lt;-<span class="st"> </span><span class="kw">installed.packages</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as_tibble</span>()</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">ipt</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">nrow</span>(ipt)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">ipt <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(LibPath, Priority)</a></code></pre></div>
+<p>Rbase -&gt; 14 packages, + 15 recommended packages</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">create_package</span>()</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">usethis<span class="op">::</span><span class="kw">use_r</span>()</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">devtools<span class="op">::</span><span class="kw">load_all</span>()</a></code></pre></div>
+</div>
+<div id="testing" class="section level3">
+<h3>Testing</h3>
+<p><a href="libs/testing.pdf">Slides Testing</a></p>
+</div>
+<div id="document-and-share" class="section level3">
+<h3>Document and share</h3>
+<p><a href="libs/document-share.pdf">Slides Document and share</a></p>
+</div>
+</div>
+<div id="spatial-and-spatiotemporal-data-analysis-in-r" class="section level2">
+<h2>Spatial and Spatiotemporal Data Analysis in R</h2>
+<p><a href="https://github.com/edzer/UseR2019" class="uri">https://github.com/edzer/UseR2019</a></p>
+</div>
+<div id="social-network" class="section level2">
+<h2>Social Network</h2>
+<p><a href="https://github.com/mariaprokofieva/useR2019_tutorial" class="uri">https://github.com/mariaprokofieva/useR2019_tutorial</a></p>
+<div id="twitter" class="section level3">
+<h3>Twitter</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(rtweet)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">library</span>(instaR)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">library</span>(tidytext)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">library</span>(wordcloud2)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw">library</span>(RoogleVision)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="kw">library</span>(jsonlite)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#Let&#39;s do our first search and locate Twitter users interested in coffee </span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">usrs &lt;-<span class="st"> </span><span class="kw">search_users</span>(<span class="st">&quot;#coffee&quot;</span>, <span class="dt">n =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">head</span>(usrs)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">tw &lt;-<span class="st"> </span><span class="kw">search_tweets</span>(<span class="dt">q =</span> <span class="st">&quot;cappuccino&quot;</span>, <span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">lang=</span><span class="st">&quot;en&quot;</span>)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">tw_coffee &lt;-<span class="st"> </span><span class="kw">search_tweets</span>(<span class="dt">q =</span> <span class="st">&quot;expresso&quot;</span>, <span class="dt">lang=</span><span class="st">&quot;en&quot;</span>, <span class="dt">n =</span> <span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#plot it!</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#plot1</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw">ts_plot</span>(tw_coffee, <span class="st">&quot;hours&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">#plot2</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">tw_coffee2 &lt;-<span class="st"> </span><span class="kw">search_tweets</span>(<span class="dt">q =</span> <span class="st">&quot;cappuccino OR latte&quot;</span>, <span class="dt">n =</span> <span class="dv">5000</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">tw_coffee2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(lang) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw">ts_plot</span>(<span class="st">&quot;hours&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">tt &lt;-<span class="st"> </span><span class="kw">search_tweets</span>(<span class="st">&quot;user2019&quot;</span>, <span class="dt">n =</span> <span class="dv">1000</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(screen_name) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n))</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="kw">search_users</span>()</a></code></pre></div>
+</div>
+</div>
+</div>
+<div id="keynote-openscience" class="section level1">
+<h1>Keynote Openscience</h1>
+<p><a href="https://jules32.github.io/useR-2019-keynote/#1" class="uri">https://jules32.github.io/useR-2019-keynote/#1</a></p>
+</div>
+<div id="talks-data-handling" class="section level1">
+<h1>Talks Data Handling</h1>
+<div id="enhancements-to-data-tidying" class="section level2">
+<h2>Enhancements to data tidying</h2>
+<p>tidyR package</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># devtools::install_github(&quot;tidyverse/tidyr&quot;)</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">library</span>(tidyr)</a></code></pre></div>
+<p>spread and gather not intuitive -&gt; new functions pivot_wide pivot_long</p>
+<p>up on cran in the next few weeks</p>
+</div>
+<div id="n-cool-dplyr-things" class="section level2">
+<h2>n() cool #dplyr things</h2>
+<p>2 new things - group_..() concept of split apply combine group_modify() group_map() group_split() group_data() group_rows() group_keys()</p>
+<ul>
+<li>column wise select columns, act on each -&gt; summarise_at: select columns, what actions ~ allows to inline define a new function ~mean(x, trim = 2)</li>
+</ul>
+</div>
+<div id="you-dont-need-spark-for-this" class="section level2">
+<h2>You don’t need spark for this</h2>
+<p>disk.frame format folder, many files - fst format, metadata</p>
+<p>csv -&gt; disk.frame -&gt; calculation</p>
+</div>
+<div id="gdata.frame-package-for-grouped-data" class="section level2">
+<h2>gdata.frame package for grouped data</h2>
+</div>
+<div id="git2rdata" class="section level2">
+<h2>git2rdata</h2>
+<p>storing data frames in plan text format suitable for version control <strong>requirements:</strong></p>
+<ol style="list-style-type: decimal">
+<li>open plain text format</li>
+<li>read data = stored data (important for fators that get lost in txt files)</li>
+<li>compat sotrage on disk</li>
+<li>meaningful history</li>
+<li>integrates with analysis</li>
+</ol>
+<p><strong>how?</strong> data: .tsv metadata: yaml file (.yaml), class+format write_vc -&gt; very memory efficient writing and reading takes more time, bc of data manipulations</p>
+</div>
+</div>
+<div id="talks-reprducibility" class="section level1">
+<h1>Talks Reprducibility</h1>
+<div id="flextable-package" class="section level2">
+<h2>flextable Package</h2>
+<p><a href="https://davidgohel.github.io/flextable/" class="uri">https://davidgohel.github.io/flextable/</a></p>
+<p>Output looks the same, independt of output format (html, word, ppt, pdf) header/body/footer</p>
+</div>
+<div id="connecting-rmarkdown-with-word" class="section level2">
+<h2>Connecting RMarkdown with Word</h2>
+<p><a href="https://sites.northwestern.edu/stattag/" class="uri">https://sites.northwestern.edu/stattag/</a></p>
+<p>StatTag: creates link between statistical code file and a word document allows to work separately but keeps the link software agnostic <strong>how?</strong> plug-in in word toolbar</p>
+</div>
+<div id="rmd-first-method" class="section level2">
+<h2>Rmd first method</h2>
+<p>statnmap/prez</p>
+<ul>
+<li>wirte code &amp; instruction in Rmd</li>
+<li>document functions with roxygen2</li>
+<li>testthat, attempt (<a href="https://github.com/ColinFay/attempt" class="uri">https://github.com/ColinFay/attempt</a>)</li>
+</ul>
+<p>make construction of package reporducible -&gt; dev_history.R in root directory of the package <a href="attachment::att_to_descrpition" class="uri">attachment::att_to_descrpition</a>() (<a href="https://github.com/ThinkR-open/attachment" class="uri">https://github.com/ThinkR-open/attachment</a>) publish for colleagues and customers -&gt; pkdgdown. vignette = final report of analysis. put pkgdown inside package -&gt; chameleon. works offline</p>
+</div>
+</div>
+<div id="keynote-missing-values" class="section level1">
+<h1>Keynote Missing Values</h1>
+<p><strong>bivariate</strong> - mean imputation deforms joint and marginal distributions mean is preserved -&gt; distroy correlation of two variables -&gt; mean imputation is bad for estimation -&gt; for prediction, mean imputation maybe ok!</p>
+<ul>
+<li><p>regression imputation</p></li>
+<li><p>stochastic regression imputation</p></li>
+</ul>
+<p><strong>multivariate data</strong> - assuming a joint model - using conditional models (joint implicitly defined)</p>
+<p>-&gt; Missing values taskview</p>
+<p>multiple imputation -&gt;</p>
+<p>logistic regression with missing covariates</p>
+</div>
+<div id="kenyote-shiny" class="section level1">
+<h1>Kenyote shiny</h1>
+<p>Package shinymeta makes shiny apps reproducible <a href="https://github.com/rstudio/shinymeta" class="uri">https://github.com/rstudio/shinymeta</a></p>
+</div>
+<div id="lightning-talks-text-mining" class="section level1">
+<h1>Lightning Talks Text Mining</h1>
+<div id="package-polite" class="section level2">
+<h2>Package polite</h2>
+<p>for webscraping</p>
+</div>
+<div id="package-sentometrics" class="section level2">
+<h2>Package sentometrics</h2>
+<p>sentiment analysis methods</p>
+</div>
+<div id="package-ggwordcloud" class="section level2">
+<h2>Package ggwordcloud</h2>
+<p>worldcloud with ggplot api</p>
+</div>
+<div id="nutella" class="section level2">
+<h2>Nutella</h2>
+</div>
+<div id="correlaid" class="section level2">
+<h2>CorrelAid</h2>
+</div>
+</div>
+<div id="talks-programming" class="section level1">
+<h1>Talks Programming</h1>
+<div id="http-requests" class="section level2">
+<h2>http requests</h2>
+</div>
+<div id="r-and-security" class="section level2">
+<h2>R and security</h2>
+</div>
+<div id="dry-out-workflow-with-usethis" class="section level2">
+<h2>DRY out workflow with usethis</h2>
+<p>www.usethis.r-lib.org<br />
+convenience functions for your workflow. package development or not.</p>
+<p>c+v -&gt; write function, template -&gt; usethis</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(usethis)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw">create_package</span>()</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">create_project</span>()</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="kw">create_from_github</span>()</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="kw">use_...</span> ()</a></code></pre></div>
+<p>uncoupling of devtools and usethis</p>
+</div>
+<div id="reusing-tidyverse-code" class="section level2">
+<h2>Reusing tidyverse code</h2>
+<p>usefull for dplyr, tidyr, ggplot2</p>
+<p>data masking -&gt; can acess columns directly, without referencing the df anymore</p>
+<p>Tidy eval in rlang package strange syntax: !!, !!! enquo()</p>
+<p>new operator: {{arg}}</p>
+<p>1 subset .data by and var in [[]] for subsetting no data masking</p>
+<p>2 passing the dots … automatically data masking</p>
+<p>3 embrace arguments inspired by glue function</p>
+<p>{{by}} and {{var}} the same as !!enquo(var) need last version of rlang! <a href="https://tidyeval.tidyverse.org" class="uri">https://tidyeval.tidyverse.org</a></p>
+</div>
+<div id="simple-arrays" class="section level2">
+<h2>Simple Arrays</h2>
+<p>package rray</p>
+</div>
+</div>
+<div id="keynote-clustering" class="section level1">
+<h1>Keynote Clustering</h1>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+---
+title: "useR!2019 Toulouse"
+author: "Thomas LR, Andrea"
+date: "July 2019"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    self_contained: false
+    lib_dir: libs
+    theme: united
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = F)
+```
+
+# Tutorials
+## Package development
+rstd.io/pkg-dev
+
+https://r-pkgs.org
+https://principles.tidyverse.org
+
+### Create package
+[Slides Package Workflow](libs/intro-basic-workflow.pdf)
+
+```{r}
+.Library
+.libPaths()
+installed.packages()
+```
+
+```{r}
+library(tidyverse)
+ipt <- installed.packages() %>% as_tibble()
+ipt
+
+nrow(ipt)
+ipt %>% count(LibPath, Priority)
+```
+
+Rbase -> 14 packages, + 15 recommended packages
+
+```{r}
+usethis::create_package()
+
+usethis::use_r()
+
+devtools::load_all()
+```
+
+### Testing
+
+[Slides Testing](libs/testing.pdf)
+
+### Document and share
+
+[Slides Document and share](libs/document-share.pdf)
+
+
+## Spatial and Spatiotemporal Data Analysis in R
+https://github.com/edzer/UseR2019
+
+
+## Social Network 
+https://github.com/mariaprokofieva/useR2019_tutorial
+
+### Twitter
+```{r}
+library(rtweet)
+library(instaR)
+library(tidyverse)
+library(tidytext)
+library(wordcloud2)
+library(RoogleVision)
+library(ggplot2)
+library(jsonlite)
+```
+```{r}
+#Let's do our first search and locate Twitter users interested in coffee 
+usrs <- search_users("#coffee", n = 100)
+head(usrs)
+
+tw <- search_tweets(q = "cappuccino", n = 100, lang="en")
+tw_coffee <- search_tweets(q = "expresso", lang="en", n = 500)
+
+#plot it!
+#plot1
+ts_plot(tw_coffee, "hours")
+
+```
+
+```{r}
+#plot2
+tw_coffee2 <- search_tweets(q = "cappuccino OR latte", n = 5000)
+
+tw_coffee2 %>%
+  dplyr::group_by(lang) %>%
+  ts_plot("hours")
+```
+```{r}
+tt <- search_tweets("user2019", n = 1000) %>% 
+  group_by(screen_name) %>% 
+  tally() %>% 
+  arrange(desc(n))
+
+search_users()
+```
+
+
+
+
+# Keynote Openscience
+https://jules32.github.io/useR-2019-keynote/#1
+
+# Talks Data Handling
+## Enhancements to data tidying
+tidyR package
+
+```{r}
+# devtools::install_github("tidyverse/tidyr")
+library(tidyr)
+```
+
+spread and gather not intuitive -> new functions
+pivot_wide
+pivot_long
+
+up on cran in the next few weeks
+
+## n() cool #dplyr things
+2 new things
+- group_..()
+concept of split apply combine
+group_modify()
+group_map()
+group_split()
+group_data()
+group_rows()
+group_keys()
+
+- column wise
+select columns, act on each
+-> summarise_at: select columns, what actions
+~ allows to inline define a new function  ~mean(x, trim = 2)
+
+## You don't need spark for this
+disk.frame format
+folder, many files - fst format, metadata
+
+csv -> disk.frame -> calculation
+
+## gdata.frame package for grouped data
+
+## git2rdata
+storing data frames in plan text format suitable for version control
+**requirements:**  
+
+1) open plain text format
+2) read data = stored data (important for fators that get lost in txt files)
+3) compat sotrage on disk
+4) meaningful history
+5) integrates with analysis  
+
+**how?**
+data: .tsv
+metadata: yaml file (.yaml), class+format
+write_vc -> very memory efficient
+writing and reading takes more time, bc of data manipulations
+
+# Talks Reprducibility
+## flextable Package
+https://davidgohel.github.io/flextable/  
+
+Output looks the same, independt of output format (html, word, ppt, pdf)
+header/body/footer
+
+
+## Connecting RMarkdown with Word
+https://sites.northwestern.edu/stattag/  
+
+StatTag: creates link between statistical code file and a word document
+allows to work separately but keeps the link
+software agnostic
+**how?** plug-in in word toolbar
+
+
+## Rmd first method
+statnmap/prez
+
+- wirte code & instruction in Rmd
+- document functions with roxygen2
+- testthat, attempt (https://github.com/ColinFay/attempt)
+
+make construction of package reporducible -> dev_history.R in root directory of the package
+attachment::att_to_descrpition() (https://github.com/ThinkR-open/attachment)
+publish for colleagues and customers -> pkdgdown. vignette = final report of analysis.
+put pkgdown inside package -> chameleon. works offline
+
+
+
+# Keynote Missing Values
+**bivariate**
+- mean imputation
+deforms joint and marginal distributions
+mean is preserved
+-> distroy correlation of two variables
+-> mean imputation is bad for estimation
+-> for prediction, mean imputation maybe ok!
+
+- regression imputation
+
+- stochastic regression imputation
+
+**multivariate data**
+- assuming a joint model
+- using conditional models (joint implicitly defined)
+
+-> Missing values taskview 
+
+
+
+multiple imputation -> 
+
+logistic regression with missing covariates
+
+
+# Kenyote shiny
+Package shinymeta makes shiny apps reproducible
+https://github.com/rstudio/shinymeta
+
+
+# Lightning Talks Text Mining
+
+## Package polite
+for webscraping
+
+## Package sentometrics
+sentiment analysis methods
+
+## Package ggwordcloud
+worldcloud with ggplot api
+
+## Nutella
+
+## CorrelAid
+
+# Talks Programming 
+
+## http requests
+
+## R and security
+
+## DRY out workflow with usethis
+www.usethis.r-lib.org  
+convenience functions for your workflow. package development or not.  
+
+c+v -> write function, template -> usethis
+
+```{r}
+library(usethis)
+
+create_package()
+create_project()
+create_from_github()
+
+use_... ()
+```
+
+uncoupling of devtools and usethis
+
+
+
+## Reusing tidyverse code
+
+usefull for dplyr, tidyr, ggplot2
+
+data masking -> can acess columns directly, without referencing the df anymore
+
+Tidy eval in rlang package
+strange syntax: !!, !!! enquo()
+
+new operator: {{arg}}
+
+1 subset .data
+by and var in [[]] for subsetting
+no data masking
+
+2 passing the dots ...
+automatically data masking
+
+3 embrace arguments
+inspired by glue function
+
+{{by}} and {{var}}
+the same as !!enquo(var)
+need last version of rlang!
+https://tidyeval.tidyverse.org
+
+
+## Simple Arrays
+package rray
+
+
+# Keynote Clustering
+
